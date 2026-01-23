@@ -13,7 +13,7 @@ const TripsData = () => {
         <Row xs={1} sm={2} md={3} lg={4} className="g-4">
           {trips.map((t) => (
             <Col key={t.id}>
-              <Card className="h-100 shadow-sm border-0">
+              <Card className="h-100 shadow-sm border-0 trips-card">
                 <div className="overflow-hidden">
                   <Card.Img
                     src={t.image}

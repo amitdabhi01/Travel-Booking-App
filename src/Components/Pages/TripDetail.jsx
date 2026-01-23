@@ -3,7 +3,17 @@ import { trips } from "../../data/TripsData";
 
 import { useNavigate, useParams } from "react-router-dom";
 
-import { Container, Row, Col, Card, Button, Image } from "react-bootstrap";
+import {
+  Container,
+  Row,
+  Col,
+  Card,
+  Button,
+  Image,
+  Badge,
+  ListGroup,
+  Accordion,
+} from "react-bootstrap";
 
 const TripDetail = () => {
   const { id } = useParams();
@@ -29,11 +39,65 @@ const TripDetail = () => {
         <Row className="mb-4">
           <Col>
             <Image
-              src={trips.image}
-              alt={trips.name}
-              fluid
-              style={{ objectFit: "cover", maxHeight: "500px" }}
+              src={trip.image}
+              alt={trip.name}
+              style={{ objectFit: "cover", maxHeight: "500px", width: "100%" }}
+              className="shadow-lg rounded-4 mt-4"
             />
+          </Col>
+        </Row>
+
+        <Row className="g-4">
+          <Col lg={8}>
+            <h2>{trip.name}</h2>
+            <p>{trip.destination}</p>
+
+            <div className="mb-3">
+              <Badge bg="primary" className="me-2">
+                {trip.duration}
+              </Badge>
+              <Badge bg="secondary" className="me-2">
+                ⭐ {trip.rating}
+              </Badge>
+              <Badge bg="info" className="me-2">
+                {trip.difficulty}
+              </Badge>
+              <Badge bg="success">₹ {trip.price}</Badge>
+            </div>
+
+            <Card className="mb-4 shadow-sm">
+              <Card.Body>
+                <Card.Title>Overview</Card.Title>
+                <Card.Text>{trip.overview}</Card.Text>
+              </Card.Body>
+            </Card>
+
+            <Card className="mb-4 shadow-sm">
+              <Card.Body>
+                <Card.Title>Trip Highlights</Card.Title>
+                <ListGroup>
+                  {trip.highlights.map((item, index) => (
+                    <ListGroup.Item key={index}>✅ {item} </ListGroup.Item>
+                  ))}
+                </ListGroup>
+              </Card.Body>
+            </Card>
+
+            <Card className="mb-4 shadow-sm">
+              <Card.Body>
+                <Card.Title>Day-Wise Itinerary</Card.Title>
+                <Accordion flush>
+                  {trip.itinerary.map((day, index) => (
+                    <Accordion.Item key={index} eventKey={String(index)}>
+                      <Accordion.Header>
+                        Day {day.day} : {day.title}
+                      </Accordion.Header>
+                      <Accordion.Body>{day.description}</Accordion.Body>
+                    </Accordion.Item>
+                  ))}
+                </Accordion>
+              </Card.Body>
+            </Card>
           </Col>
         </Row>
       </Container>
