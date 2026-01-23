@@ -2,10 +2,10 @@ import Carousel from "react-bootstrap/Carousel";
 
 function CarouselFadeExample() {
   return (
-    <Carousel fade>
+    <Carousel fade className="mt-5">
       <Carousel.Item>
         <video
-          className="d-block w-100 p-3 "
+          className="d-block w-100"
           autoPlay
           loop
           muted
@@ -13,7 +13,7 @@ function CarouselFadeExample() {
           style={{ height: "600px", objectFit: "cover" }}
         >
           <source
-            src="https://videos.pexels.com/video-files/2169880/2169880-uhd_2560_1440_30fps.mp4"
+            src="https://www.pexels.com/download/video/33834286/"
             type="video/mp4"
           />
           Your browser does not support the video tag.
@@ -26,25 +26,25 @@ function CarouselFadeExample() {
       <Carousel.Item>
         <img
           className="d-block w-100"
-          src="https://images.pexels.com/photos/1320684/pexels-photo-1320684.jpeg?auto=compress&cs=tinysrgb&w=1920"
-          alt="Beautiful beach destination"
+          src="https://images.pexels.com/photos/28271729/pexels-photo-28271729.jpeg"
+          alt="Beautiful Mountains"
           style={{ height: "600px", objectFit: "cover" }}
         />
         <Carousel.Caption>
-          <h3>Tropical Paradise</h3>
-          <p>Relax on pristine beaches and crystal clear waters.</p>
+          <h3>Åndalsnes, Møre og Romsdal, Norwegen</h3>
+          <p>A view of a mountain range with a town in the middle</p>
         </Carousel.Caption>
       </Carousel.Item>
       <Carousel.Item>
         <img
           className="d-block w-100"
-          src="https://images.pexels.com/photos/2265876/pexels-photo-2265876.jpeg?auto=compress&cs=tinysrgb&w=1920"
-          alt="Mountain landscape"
+          src="https://images.pexels.com/photos/9149367/pexels-photo-9149367.jpeg"
+          alt="Beautiful Beach"
           style={{ height: "600px", objectFit: "cover" }}
         />
         <Carousel.Caption>
-          <h3>Mountain Adventures</h3>
-          <p>Experience breathtaking views and unforgettable journeys.</p>
+          <h3>Maldives</h3>
+          <p>An Island Surrounded by Clear Sea Water</p>
         </Carousel.Caption>
       </Carousel.Item>
     </Carousel>
