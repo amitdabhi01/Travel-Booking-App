@@ -33,6 +33,14 @@ const TripDetail = () => {
     );
   }
 
+  const handleBook = () => {
+    if (!user) {
+      navigate("/auth");
+    } else {
+      navigate(`/trip/${id}/book`);
+    }
+  };
+
   return (
     <>
       <Container className="py-5">
@@ -96,6 +104,68 @@ const TripDetail = () => {
                     </Accordion.Item>
                   ))}
                 </Accordion>
+              </Card.Body>
+            </Card>
+
+            <Row className="g-3 mb-4">
+              <Col md={6}>
+                <Card className="h-100 shadow-sm">
+                  <Card.Body>
+                    <Card.Title>Inclusions</Card.Title>
+                    <ListGroup variant="flush">
+                      {trip.inclusions.map((item, i) => (
+                        <ListGroup.Item key={i}> ✅{item} </ListGroup.Item>
+                      ))}
+                    </ListGroup>
+                  </Card.Body>
+                </Card>
+              </Col>
+
+              <Col md={6}>
+                <Card className="h-100 shadow-sm">
+                  <Card.Body>
+                    <Card.Title>Exclusions</Card.Title>
+                    <ListGroup variant="flush">
+                      {trip.exclusions.map((item, i) => (
+                        <ListGroup.Item key={i}> ✅{item} </ListGroup.Item>
+                      ))}
+                    </ListGroup>
+                  </Card.Body>
+                </Card>
+              </Col>
+            </Row>
+
+            <Card>
+              <Card.Body>
+                <Card.Title>Best Time To Visit</Card.Title>
+                <Card.Text>{trip.bestTimeToVisit}</Card.Text>
+              </Card.Body>
+            </Card>
+
+            <Button variant="outline-dark" onClick={() => navigate(-1)}>
+              ⬅️ Back To Trips
+            </Button>
+          </Col>
+          <Col md={4}>
+            <Card className="shadow-sm sticky-top" style={{ top: "90px" }}>
+              <Card.Body>
+                <h4 className="fw-bold mb-3">₹ {trip.price}</h4>
+                <p className="text-muted mb-3">
+                  {trip.duration} • {trip.difficulty}
+                </p>
+
+                <Button
+                  variant="primary"
+                  size="lg"
+                  className="w-100 mb-2"
+                  onClick={handleBook}
+                >
+                  Book Now
+                </Button>
+
+                <Button variant="outline-secondary" className="w-100">
+                  Enquire
+                </Button>
               </Card.Body>
             </Card>
           </Col>
