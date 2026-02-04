@@ -1,23 +1,27 @@
 import React from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
-import Layout from "./Routes/Layout";
-import Home from "./Components/Home";
-import TripsData from "./Components/Pages/Trips";
-import TripDetail from "./Components/Pages/TripDetail";
-import ProtectedRoutes from "./Routes/ProtectedRoutes";
-import BookingForm from "./Components/Pages/BookingForm";
-import MyBooking from "./Components/Pages/MyBooking";
-import Auth from "./Auth/Auth";
+import { Container, Row, Col } from "react-bootstrap";
+
+import Layout from "./routes/Layout";
+import Home from "./components/ui/Home";
+import TripsData from "./components/pages/Trips";
+import TripDetail from "./components/pages/TripDetail";
+import Auth from "./auth/Auth";
+import BookingForm from "./components/pages/BookingForm";
+import ProtectedRoutes from "./routes/ProtectedRoutes";
+import ErrorElement from "./components/ui/ErrorElement";
+import MyBookings from "./components/pages/MyBookings";
 
 const App = () => {
   const router = createBrowserRouter([
     {
       path: "/",
       element: <Layout />,
+      errorElement: <ErrorElement />,
       children: [
         {
-          path: "/",
+          index: true,
           element: <Home />,
         },
         {
@@ -41,13 +45,14 @@ const App = () => {
             },
             {
               path: "myBooking",
-              element: <MyBooking />,
+              element: <MyBookings />,
             },
           ],
         },
       ],
     },
   ]);
+
   return (
     <>
       <RouterProvider router={router}></RouterProvider>

@@ -1,11 +1,5 @@
-* {
-   font-family: "Montserrat", sans-serif !important;
-   font-weight: 500 !important;
-}
-.trips-card{
-   transition-duration:  0.5s;
-   transition-property: transform;
-}
-.trips-card:hover{
-  transform: translateY(-10px);
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
