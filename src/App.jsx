@@ -5,7 +5,10 @@ import Layout from "./Routes/Layout";
 import Home from "./Components/Home";
 import TripsData from "./Components/Pages/Trips";
 import TripDetail from "./Components/Pages/TripDetail";
-
+import ProtectedRoutes from "./Routes/ProtectedRoutes";
+import BookingForm from "./Components/Pages/BookingForm";
+import MyBooking from "./Components/Pages/MyBooking";
+import Auth from "./Auth/Auth";
 
 const App = () => {
   const router = createBrowserRouter([
@@ -23,7 +26,24 @@ const App = () => {
         },
         {
           path: "trips/:id",
-          element: <TripDetail/>
+          element: <TripDetail />,
+        },
+        {
+          path: "auth",
+          element: <Auth />,
+        },
+        {
+          element: <ProtectedRoutes />,
+          children: [
+            {
+              path: "trip/:id/book",
+              element: <BookingForm />,
+            },
+            {
+              path: "myBooking",
+              element: <MyBooking />,
+            },
+          ],
         },
       ],
     },

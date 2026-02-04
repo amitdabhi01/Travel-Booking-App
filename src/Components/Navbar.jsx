@@ -1,7 +1,15 @@
+import { useContext } from "react";
 import { Container, Nav, Navbar } from "react-bootstrap";
 import { NavLink } from "react-router-dom";
+import { AuthContext } from "../contex/AuthContext";
 
 function Navigation() {
+  const { user } = useContext(AuthContext);
+
+  const handleLogout = async () => {
+    await signOut(auth);
+  };
+
   return (
     <Navbar expand="lg" className="bg-body-tertiary" fixed="top">
       <Container>
@@ -16,6 +24,18 @@ function Navigation() {
               Trips
             </Nav.Link>
             <Nav.Link href="#login">About</Nav.Link>
+            {!user ? (
+              <Nav.Link as={NavLink} to="/auth">
+                Login
+              </Nav.Link>
+            ) : (
+              <>
+                <Nav.Link as={NavLink} to="/myBooking" className="me-2">
+                  My Bookings
+                </Nav.Link>
+                <Nav.Link onClick={handleLogout}>Logout</Nav.Link>
+              </>
+            )}
           </Nav>
         </Navbar.Collapse>
       </Container>
