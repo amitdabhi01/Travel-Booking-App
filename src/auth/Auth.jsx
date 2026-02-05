@@ -72,9 +72,9 @@ const Auth = () => {
     try {
       const result = await signInWithPopup(auth, googleProvider);
 
-       if (result) {
-          navigate("/trips");
-        }
+      if (result) {
+        navigate("/trips");
+      }
     } catch (error) {
       setError(error);
     }
@@ -86,7 +86,7 @@ const Auth = () => {
         <Col>
           <Card className="shadow  p-4" style={{ width: "400px" }}>
             <Card.Title className="text-center">
-            <h4>  {isLogin ? "Login" : "Sign up"}</h4>
+              <h4> {isLogin ? "Login" : "Sign up"}</h4>
             </Card.Title>
             <Form
               className="d-flex justify-content-center align-items-center flex-column"
